@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Atlantis The Royal | Guest Check-in</title>
+  <!-- Google Fonts for Luxury Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Background Image & Overlay Container -->
+  <div class="app-background">
+    <div class="bg-overlay"></div>
+  </div>
+
+  <!-- Device Frame Toggle for Desktop Viewers -->
+  <div class="view-mode-toggle" id="viewModeToggle" title="Toggle Mobile Frame / Fullscreen">
+    <button id="toggleFrameBtn">
+      <svg class="icon-phone" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="5" y="2" width="14" height="20" rx="3" ry="3"></rect>
+        <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3" stroke-linecap="round"></line>
+      </svg>
+      <span id="toggleText">Mobile Frame View</span>
+    </button>
+  </div>
+
+  <!-- Main Mobile Frame Container -->
+  <div class="app-shell" id="appShell">
+    
+
+
+    <!-- PAGE 0: SPLASH SCREEN ENTRY -->
+    <section class="page page-splash active" id="pageSplash">
+      <div class="splash-content">
+        <div class="splash-logo-wrap">
+          <img src="logo.png" alt="Atlantis The Royal" class="splash-logo">
+        </div>
+        <p class="splash-tagline" data-i18n="splashTagline">Where luxury meets the horizon</p>
+        
+        <div class="splash-action-container">
+          <!-- Begin button -->
+          <button id="btnEnterApp" class="btn-luxury-enter">
+            <span class="btn-text" data-i18n="beginExperience">Begin Experience</span>
+            <svg class="arrow-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+          
+          <!-- Luxury golden progress loader -->
+          <div class="luxury-loader-wrap" id="splashLoader" style="display: none;">
+            <div class="gold-progress-bar">
+              <div class="gold-progress-fill" id="progressFill"></div>
+            </div>
+            <p class="loader-text" data-i18n="securingConnection">Securing luxury connection...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 1: WELCOME SCREEN -->
+    <section class="page page-welcome" id="pageWelcome">
+      
+      <!-- Top Navigation Bar -->
+      <header class="header">
+        <div class="header-empty"></div>
+        <div class="lang-selector-wrap">
+          <span class="lang-label" data-i18n="selectLanguage">Select Language</span>
+          <div class="lang-dropdown-btn" id="langBtn1">
+            <span class="lang-flag" id="currentFlag1">🇬🇧</span>
+            <span class="lang-name" id="currentLang1">English</span>
+            <svg class="chevron" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+        </div>
+      </header>
+
+      <!-- Brand Logo -->
+      <div class="brand-container">
+        <img src="logo.png" alt="Atlantis The Royal" class="brand-logo-img">
+      </div>
+
+      <!-- Welcome Heading -->
+      <div class="heading-group">
+        <h2 class="hero-heading" data-i18n="welcome">Welcome</h2>
+        <p class="hero-subtext" data-i18n="welcomeSub">Your luxury stay begins here</p>
+      </div>
+
+      <!-- Main Check-in Action Card -->
+      <div class="checkin-card" id="startCheckinCard" role="button" tabindex="0">
+        <div class="checkin-card-left">
+          <div class="bell-icon-badge">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="#cb963c">
+              <path d="M12 2a2 2 0 0 0-2 2h4a2 2 0 0 0-2-2zm-6 7v6l-2 2v1h16v-1l-2-2V9a6 6 0 0 0-12 0zm6 13a2.5 2.5 0 0 0 2.5-2.5h-5A2.5 2.5 0 0 0 12 22z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="checkin-card-divider"></div>
+        <div class="checkin-card-center">
+          <h3 class="card-title" data-i18n="checkin">Check-in</h3>
+          <p class="card-desc" data-i18n="checkinDesc">Already have a booking?<br>Check-in and access your stay.</p>
+        </div>
+        <div class="checkin-card-right">
+          <button class="arrow-btn" aria-label="Proceed to Check-in">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="#cb963c" stroke-width="2.5" fill="none" stroke-linecap="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Feature Grid -->
+      <div class="features-grid">
+        <div class="feature-item" onclick="openFeatureModal('dining')">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="#cb963c" stroke-width="1.8" fill="none">
+              <path d="M12 4a8 8 0 0 0-8 8h16a8 8 0 0 0-8-8zM4 14h16v2H4zM10 18h4v2h-4z"/>
+            </svg>
+          </div>
+          <span class="feature-label" data-i18n="dining">Delicious Dining</span>
+        </div>
+        <div class="feature-item" onclick="openFeatureModal('spa')">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="#cb963c" stroke-width="1.8" fill="none">
+              <path d="M12 3c-2.5 3-5 5-5 8.5a5 5 0 0 0 10 0C17 8 14.5 6 12 3z"/>
+              <path d="M6 14c-2 2-3 4-3 6.5a3.5 3.5 0 0 0 7 0c0-2.5-2-4.5-4-6.5z"/>
+              <path d="M18 14c-2 2-4 4.5-4 6.5a3.5 3.5 0 0 0 7 0c0-2.5-1-4.5-3-6.5z"/>
+            </svg>
+          </div>
+          <span class="feature-label" data-i18n="spa">Spa & Wellness</span>
+        </div>
+        <div class="feature-item" onclick="openFeatureModal('services')">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="#cb963c" stroke-width="1.8" fill="none">
+              <rect x="4" y="8" width="16" height="12" rx="2"></rect>
+              <path d="M9 8V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v3"></path>
+              <line x1="12" y1="12" x2="12" y2="16"></line>
+            </svg>
+          </div>
+          <span class="feature-label" data-i18n="services">World Class Services</span>
+        </div>
+        <div class="feature-item" onclick="openFeatureModal('experiences')">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="#cb963c" stroke-width="1.8" fill="none">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <span class="feature-label" data-i18n="experiences">Memorable Experiences</span>
+        </div>
+      </div>
+
+      <!-- Footer Note -->
+      <footer class="footer-welcome">
+        <div class="diamond-divider">
+          <span class="line"></span>
+          <span class="diamond">◆</span>
+          <span class="line"></span>
+        </div>
+        <p class="footer-msg" data-i18n="footerMsg">We're here to make your stay exceptional.</p>
+        <p class="footer-thanks" data-i18n="thankYou">Thank You!</p>
+      </footer>
+    </section>
+
+
+    <!-- PAGE 2: MOBILE VERIFICATION (CHECK-IN) SCREEN -->
+    <section class="page page-verify" id="pageVerify">
+      
+      <!-- Header Bar with Back Button & Language Selector -->
+      <header class="header">
+        <button class="nav-back-btn" id="backToWelcomeBtn" aria-label="Go Back">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <div class="header-logo-compact">
+          <h1 class="compact-title">ATLANTIS THE ROYAL</h1>
+        </div>
+        <div class="lang-dropdown-btn" id="langBtn2">
+          <span class="lang-globe">🌐</span>
+          <span class="lang-name" id="currentLang2">English</span>
+          <svg class="chevron" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </header>
+
+      <!-- Page Title -->
+      <div class="verify-heading-group">
+        <h2 class="verify-heading" data-i18n="checkinHeading">Check-in</h2>
+        <p class="verify-subtext" data-i18n="checkinSub">Let's get you checked in</p>
+      </div>
+
+      <!-- Main Glass Card Form -->
+      <div class="verify-card">
+        <!-- Phone Badge Icon -->
+        <div class="phone-badge">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="#f5d77f">
+            <rect x="7" y="2" width="10" height="20" rx="2" ry="2"></rect>
+            <line x1="11" y1="19" x2="13" y2="19" stroke="#121824" stroke-width="2" stroke-linecap="round"></line>
+          </svg>
+        </div>
+
+        <h3 class="verify-card-title" data-i18n="verifyTitle">Verify Your Mobile Number</h3>
+        <p class="verify-card-desc" data-i18n="verifyDesc">We will send a verification code to your WhatsApp to complete your check-in.</p>
+
+        <!-- Input Group -->
+        <div class="input-field-wrap">
+          <label class="input-label" data-i18n="mobileLabel">Mobile Number</label>
+          <div class="phone-input-box" id="phoneInputBox">
+            <!-- Country Code Dropdown Trigger -->
+            <div class="country-select-btn" id="countrySelectBtn">
+              <span class="flag-icon" id="selectedFlag">🇦🇪</span>
+              <span class="dial-code" id="selectedDialCode">+971</span>
+              <svg class="chevron-sm" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="input-vertical-line"></div>
+            <input type="tel" id="mobileNumberInput" class="phone-input" placeholder="Enter your mobile number" autocomplete="tel">
+          </div>
+        </div>
+
+        <!-- WhatsApp Info Box -->
+        <div class="whatsapp-info-box">
+          <div class="wa-icon-wrap">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="#25D366">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+          </div>
+          <div class="wa-text-content">
+            <h4 class="wa-title" data-i18n="waTitle">We'll send the code to your WhatsApp</h4>
+            <p class="wa-subtitle" data-i18n="waSub">Make sure you have WhatsApp installed</p>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="btn-send-code" id="sendCodeBtn">
+          <span class="btn-text" data-i18n="sendCode">Send Code on WhatsApp</span>
+          <div class="btn-wa-badge">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="#121824">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+            </svg>
+          </div>
+        </button>
+
+        <!-- Security Lock Note -->
+        <div class="security-note">
+          <svg viewBox="0 0 24 24" width="14" height="14" stroke="#f5d77f" stroke-width="2" fill="none">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span data-i18n="secureNote">Your information is secure and encrypted</span>
+        </div>
+      </div>
+
+      <!-- Bottom Front Desk Link -->
+      <div class="frontdesk-link-wrap" id="frontDeskTrigger">
+        <div class="lifebuoy-icon">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="#cb963c" stroke-width="2" fill="none">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="4"></circle>
+            <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line>
+            <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line>
+            <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line>
+            <line x1="14.83" y1="9.17" x2="9.17" y2="14.83"></line>
+          </svg>
+        </div>
+        <span class="help-text" data-i18n="needHelp">Need help?</span>
+        <span class="help-action" data-i18n="contactDesk">Contact Front Desk</span>
+      </div>
+
+    </section>
+  </div>
+
+
+  <!-- COUNTRY SELECTOR MODAL -->
+  <div class="modal-backdrop" id="countryModal">
+    <div class="modal-sheet">
+      <div class="sheet-header">
+        <h3 data-i18n="selectCountry">Select Country Code</h3>
+        <button class="close-modal-btn" onclick="closeCountryModal()">&times;</button>
+      </div>
+      <div class="country-search-box">
+        <input type="text" id="countrySearchInput" placeholder="Search country or dial code...">
+      </div>
+      <div class="country-list" id="countryList">
+        <!-- Dynamically populated -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- LANGUAGE SELECTOR MODAL -->
+  <div class="modal-backdrop" id="langModal">
+    <div class="modal-sheet">
+      <div class="sheet-header">
+        <h3 data-i18n="chooseLanguage">Choose Language</h3>
+        <button class="close-modal-btn" onclick="closeLangModal()">&times;</button>
+      </div>
+      <div class="lang-list">
+        <div class="lang-option-item" onclick="setLanguage('en')">
+          <span class="flag">🇬🇧</span>
+          <span class="label">English</span>
+        </div>
+        <div class="lang-option-item" onclick="setLanguage('ar')">
+          <span class="flag">🇦🇪</span>
+          <span class="label">العربية (Arabic)</span>
+        </div>
+        <div class="lang-option-item" onclick="setLanguage('fr')">
+          <span class="flag">🇫🇷</span>
+          <span class="label">Français (French)</span>
+        </div>
+        <div class="lang-option-item" onclick="setLanguage('de')">
+          <span class="flag">🇩🇪</span>
+          <span class="label">Deutsch (German)</span>
+        </div>
+        <div class="lang-option-item" onclick="setLanguage('ru')">
+          <span class="flag">🇷🇺</span>
+          <span class="label">Русский (Russian)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- REAL-TIME WHATSAPP OTP VERIFICATION MODAL -->
+  <div class="modal-backdrop" id="otpModal">
+    <div class="modal-sheet otp-sheet">
+      <div class="sheet-header">
+        <h3 data-i18n="otpTitle">WhatsApp Verification Code</h3>
+        <button class="close-modal-btn" onclick="closeOtpModal()">&times;</button>
+      </div>
+      <div class="otp-body" id="otpBodyContent">
+        <div class="otp-icon-wrap">
+          <svg viewBox="0 0 24 24" width="36" height="36" fill="#25D366">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+          </svg>
+        </div>
+        <p class="otp-sent-text">Enter the 4-digit code sent to your WhatsApp number <strong id="otpDisplayPhone">+971 50 *** ****</strong></p>
+        
+        <!-- 4 Digit Input -->
+        <div class="otp-inputs">
+          <input type="text" maxlength="1" class="otp-digit" id="otp1" autocomplete="off" autofocus>
+          <input type="text" maxlength="1" class="otp-digit" id="otp2" autocomplete="off">
+          <input type="text" maxlength="1" class="otp-digit" id="otp3" autocomplete="off">
+          <input type="text" maxlength="1" class="otp-digit" id="otp4" autocomplete="off">
+        </div>
+
+        <div class="otp-timer">
+          <span>Resend code in <strong id="timerCountdown">45</strong>s</span>
+          <button id="resendBtn" class="btn-resend-disabled" disabled>Resend Code</button>
+        </div>
+
+        <button class="btn-confirm-otp" id="confirmOtpBtn">Verify & Complete Check-in</button>
+      </div>
+
+      <!-- Success Screen State -->
+      <div class="otp-success-state" id="otpSuccessState" style="display:none;">
+        <div class="success-checkmark">
+          <svg viewBox="0 0 52 52" class="checkmark-svg">
+            <circle class="checkmark-circle" cx="26" cy="26" r="23" fill="none"/>
+            <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+          </svg>
+        </div>
+        <h3>Check-in Confirmed!</h3>
+        <p>Welcome to Atlantis The Royal. Your luxury suite key pass and digital concierge itinerary have been activated.</p>
+        <button class="btn-confirm-otp" onclick="resetToWelcome()">Return to Welcome Screen</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- FEATURE INFORMATION MODAL -->
+  <div class="modal-backdrop" id="featureModal">
+    <div class="modal-sheet feature-sheet">
+      <div class="sheet-header">
+        <h3 id="featureModalTitle">Delicious Dining</h3>
+        <button class="close-modal-btn" onclick="closeFeatureModal()">&times;</button>
+      </div>
+      <div class="feature-modal-body">
+        <div class="feature-badge-icon" id="featureModalIcon">🍽️</div>
+        <p id="featureModalDesc" class="feature-modal-text">Experience culinary mastery by world-class Michelin chefs across 17 signature restaurants, bars, and lounges.</p>
+        <button class="btn-confirm-otp" onclick="closeFeatureModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- FRONT DESK ASSISTANCE MODAL -->
+  <div class="modal-backdrop" id="frontDeskModal">
+    <div class="modal-sheet frontdesk-sheet">
+      <div class="sheet-header">
+        <h3>Front Desk & Concierge</h3>
+        <button class="close-modal-btn" onclick="closeFrontDeskModal()">&times;</button>
+      </div>
+      <div class="frontdesk-body">
+        <div class="help-option" onclick="simulateFrontDeskAction('call')">
+          <div class="option-icon">📞</div>
+          <div class="option-info">
+            <h4>Call Concierge Desk</h4>
+            <p>Direct priority line: +971 4 426 0000</p>
+          </div>
+        </div>
+        <div class="help-option" onclick="simulateFrontDeskAction('chat')">
+          <div class="option-icon">💬</div>
+          <div class="option-info">
+            <h4>Live WhatsApp Support</h4>
+            <p>Chat instantly with our Royal Butler Team</p>
+          </div>
+        </div>
+        <div class="help-option" onclick="simulateFrontDeskAction('callback')">
+          <div class="option-icon">🛎️</div>
+          <div class="option-info">
+            <h4>Request In-Person Greeting</h4>
+            <p>Our host will greet you at the Grand Lobby</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
